@@ -1,0 +1,72 @@
+
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div *ngIf="stockList.length>0">
+      <table class="table table-bordered">
+
+        <tr>
+          <th width="10%">Id Stock</th>
+          <th width="15%">Stock name</th>
+          <th width="10%">Quantity</th>
+          <th width="15%">Stock State</th>
+          <th width="10%">Remark</th>
+          <th width="20%">Description</th>
+          <th width="10%"></th>
+          <th width="10%"></th>
+        </tr>
+
+        <tr *ngFor="let stock of stockList">
+          <td>
+            <p> {{stock.idStock}}</p>
+          </td>
+
+          <td>
+            <p> {{stock.libelleStock}}</p>
+
+          </td>
+
+          <td>
+            <p> {{stock.quantite}}</p>
+
+          </td>
+
+          <td>
+            <p> {{stock.etatStock}}</p>
+            <!--
+              <a *ngIf="stock.quantite>5" type="button" class="btn btn-success btn-sm" >Stock Disponible</a>
+
+              <a *ngIf="stock.quantite<=5 && stock.quantite>1" class="btn btn-warning btn-sm" >  Stock insuffisant</a>
+
+              <a *ngIf="stock.quantite==0" type="button" class="btn btn-danger btn-sm" >Stock expiré</a>
+              -->
+          </td>
+
+          <td>
+            <p>{{stock.remark}}</p>
+          </td>
+          <td>
+            <p>{{stock.desciption}}</p>
+          </td>
+
+          <td>
+            <button class="btn btn-info btn-sm" routerLink="/stock/edit-stock/{{stock.idStock}}">Update</button>
+          </td>
+
+          <td>
+            <button class="btn btn-info btn-sm"  (click)="deleteStock(stock)"> Delete</button>
+          </td>
+
+        </tr>
+
+
+      </table>
+
+    </div>
+    <div *ngIf="stockList.length===0" class="alert-warning col-md-12" role="alert">
+
+      Your stock  is empty
+    </div>
+    <button class="btn btn-primary btn-sm" routerLink="/stock/addstock"> + Add Stock</button>
+  </div>
+</div>
+

@@ -1,0 +1,84 @@
+
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <!--
+<form class="row g-3" (ngSubmit)="saveStock()">
+  <div class="col-md-8">
+    <label for="inputEmail4" class="form-label">Stock name</label>
+    <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="stock.libelleStock">
+  </div>
+
+  <div class="col-md-8">
+    <label for="inputPassword4" class="form-label">Quantity</label>
+    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="stock.quantite">
+  </div>
+  <div class="col-md-8">
+    <label for="inputPassword4" class="form-label">Etat de stock</label>
+    <input type="text" class="form-control" id="" [(ngModel)]="stock.etatStock">
+  </div>
+  <div class="col-md-8">
+    <label for="inputAddress" class="form-label">Remark</label>
+    <input type="text" class="form-control" id="inputAddress" [(ngModel)]="stock.remark" >
+  </div>
+  <div class="col-12">
+    <label for="inputAddress2" class="form-label">Description</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" [(ngModel)]="stock.desciption">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary" >Add Stock</button>
+  </div>
+</form>
+-->
+    <form class="row g-3" #f='ngForm' >
+
+      <div class="col-md-8">
+        <label  class="form-label">Stock name</label>
+        <input type="text" name="libelle" [(ngModel)]="stock.libelleStock" placeholder="Enter  name" class="form-control"
+
+               ngModel #name='ngModel' required >
+        <div *ngIf="name.touched && name.invalid" class="alert alert-danger" [hidden]="!name.invalid"> Name is required </div>
+      </div>
+
+      <div class="col-md-8">
+        <label class="form-label">Quantity</label>
+        <input type="text" name="quantite" [(ngModel)]="stock.quantite" placeholder="Enter quantity" class="form-control"
+               ngModel #quantity='ngModel' required >
+        <div *ngIf="quantity.touched && quantity.invalid" class="alert alert-danger" [hidden]="!quantity.invalid"> Quantity is required </div>
+        <div *ngIf="quantity.value<0"   class="alert alert-danger"  > Quantity must be greater than 0 </div>
+
+      </div>
+      <div class="col-md-8">
+        <label  class="form-label">Remark</label>
+        <input type="text" name="remark" [(ngModel)]="stock.remark" placeholder="Enter remark"
+               class="form-control">
+      </div>
+      <!--
+              <div class="col-md-8">
+                <label class="form-label">Etat de stock</label>
+              <input type="text" name="expense" [(ngModel)]="stock.etatStock" placeholder="Enter etat de stock"
+                     class="form-control">
+              </div>
+              -->
+      <div class="col-md-8">
+        <label  class="form-label">Description</label>
+        <input type="text" name="description" [(ngModel)]="stock.desciption" placeholder="Enter  description" class="form-control"
+               ngModel #description='ngModel' minlength="5" required>
+        <div class="alert alert-danger" *ngIf="description.invalid && description.touched">
+          <div *ngIf="description.errors?.required">Description required</div>
+          <div *ngIf="description.errors?.minlength">Description minimum 3 caracters</div>
+
+
+        </div>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary" (click)="saveStock()" [disabled]="f.invalid" >Add Stock</button>
+      </div>
+
+
+
+
+
+    </form>
+  </div>
+</div>
+

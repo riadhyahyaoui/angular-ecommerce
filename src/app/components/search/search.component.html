@@ -1,0 +1,13 @@
+<form class="form-header" onsubmit="return false;" method="GET">
+  <input #inputElement class="au-input au-input-xl" type="text" name="search"
+         placeholder="Search for data ..."
+
+      (keyup.enter)="doSearching(inputElement.value)"
+  />
+  <button class="au-btn-submit" type="submit" (click)="doSearching(inputElement.value)">
+    Search
+  </button>
+  <button class="au-btn-submit" type="submit" routerLink="/stock/stocks" style="margin-left: 70px">
+    Go To Stock
+  </button>
+</form>
